@@ -3,6 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+      button {
+            color: blue;
+        }
+      .text-bold.background-color-khaki {
+            background-color: #78866b;
+            font-weight: bold;
+        }
+      #header_1 {
+            font-size: 120px;
+        }
+      input[type="text"] {
+            border: 3px solid black;
+        }
+      a:hover {
+            color: orange;
+        }
+      button.delete {
+            background-color: red;
+        }
+      input[type="email"]:focus {
+            border-color: blue;
+        }
+      ul li:nth-child(2) {
+            color: red;
+        }
+      td:nth-child(even) {
+            background-color: lightgray;
+        }
+  </style>
 </head>
 <body>
   <div>
@@ -12,8 +42,8 @@
       <h4>Заголовок H4</h4>
       <h5>Заголовок H5</h5>
       <h6>Заголовок H6</h6>
-      <p class="text bold">Основной текст страницы
-          <span style="color: green;">А этот текст я отдельно выделю зеленым</span>
+      <p class="text-bold background-color-khaki">Основной текст страницы
+          <span style="color: white;">А этот текст я отдельно выделю белым</span>
       </p>
       <a href="https://example.com" target="_blank">Перейти по ссылке в отдельной вкладке</a>
       <br>
@@ -38,11 +68,14 @@
       <textarea>Широкое текстовое поле</textarea>
       <br>
       <button type="submit">Отправить</button>
+      <button class="delete">Удалить</button>
     </form>
     <table>
       <tr>
         <td>Ячейка 1 строка 1</td>
         <td>Ячейка 2 строка 1</td>
+        <td>Ячейка 2 строка 3</td>
+        <td>Ячейка 2 строка 4</td>
       </tr>
       <tr>
         <td>Ячейка 1 строка 2</td>
