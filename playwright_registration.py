@@ -33,6 +33,3 @@ with sync_playwright() as playwright:
     expect(dashboard_header).to_be_visible()
     # Проверяем текст
     expect(dashboard_header).to_have_text("Dashboard")
-
-    # Пауза на 5 секунд, чтобы увидеть результат
-    page.wait_for_timeout(5000)

@@ -30,5 +30,3 @@ with sync_playwright() as playwright:
     # Проверяем текст
     expect(wrong_email_or_password_alert).to_have_text("Wrong email or password")
 
-    # Пауза на 5 секунд, чтобы увидеть результат
-    page.wait_for_timeout(5000)
