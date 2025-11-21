@@ -8,7 +8,7 @@ with sync_playwright() as playwright:
     # Создаем новую страницу
     page = browser.new_page()
 
-    # Переходим на страницу авторизации
+    # Переходим на страницу регистрации
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
     # Находим поле "Email" и заполняем его
