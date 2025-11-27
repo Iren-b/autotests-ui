@@ -1,6 +1,10 @@
+# Импортируем библиотеку pytest
+import pytest
 # Импорт Playwright для синхронного режима и проверки
 from playwright.sync_api import sync_playwright, expect
 
+@pytest.mark.courses
+@pytest.mark.regression
 def test_empty_courses_list():
     # Запуск Playwright в синхронном режиме
     with sync_playwright() as playwright:

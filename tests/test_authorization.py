@@ -1,6 +1,10 @@
+# Импортируем библиотеку pytest
+import pytest
 # Импорт Playwright для синхронного режима и проверки
 from playwright.sync_api import sync_playwright, expect
 
+@pytest.mark.regression  # Добавили маркировку regression
+@pytest.mark.authorization  # Добавили маркировку authorization
 def test_wrong_email_or_password_authorization():  # Создаем тестовую функцию
     # Запуск Playwright в синхронном режиме
     with sync_playwright() as playwright:

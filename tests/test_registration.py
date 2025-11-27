@@ -1,6 +1,10 @@
+# Импортируем библиотеку pytest
+import pytest
 # Импорт Playwright для синхронного режима и проверки
 from playwright.sync_api import sync_playwright, expect
 
+@pytest.mark.regression  # Добавили маркировку regression
+@pytest.mark.registration  # Добавили маркировку registration
 def test_successful_registration():  # Создаем тестовую функцию
     # Запуск Playwright в синхронном режиме
     with sync_playwright() as playwright:
