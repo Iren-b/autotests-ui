@@ -1,36 +1,24 @@
 # Импортируем библиотеку pytest
 import pytest
 # Импорт Playwright для синхронного режима и проверки
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import expect, Page
 
 @pytest.mark.regression  # Добавили маркировку regression
 @pytest.mark.authorization  # Добавили маркировку authorization
-def test_wrong_email_or_password_authorization():  # Создаем тестовую функцию
-    # Запуск Playwright в синхронном режиме
-    with sync_playwright() as playwright:
-        # Открываем браузер Chromium (не в headless режиме, чтобы видеть действия)
-        browser = playwright.chromium.launch(headless=False)
-        # Создаем новую страницу
-        page = browser.new_page()
+def test_successful_registration(chromium_page: Page):  # Теперь используем фикстуру
+    chromium_page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
-        # Переходим на страницу авторизации
-        page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
+    email_input = chromium_page.get_by_test_id('registration-form-email-input').locator('input')
+    email_input.fill('user.name@gmail.com')
 
-        # Находим поле "Email" и заполняем его
-        email_input = page.get_by_test_id('login-form-email-input').locator('input')
-        email_input.fill("user.name@gmail.com")
+    username_input = chromium_page.get_by_test_id('registration-form-username-input').locator('input')
+    username_input.fill('username')
 
-        # Находим поле "Password" и заполняем его
-        password_input = page.get_by_test_id('login-form-password-input').locator('input')
-        password_input.fill("password")
+    password_input = chromium_page.get_by_test_id('registration-form-password-input').locator('input')
+    password_input.fill('password')
 
-        # Находим кнопку "Login" и кликаем на нее
-        login_button = page.get_by_test_id('login-page-login-button')
-        login_button.click()
+    registration_button = chromium_page.get_by_test_id('registration-page-registration-button')
+    registration_button.click()
 
-        # Проверяем, что появилось сообщение об ошибке
-        wrong_email_or_password_alert = page.locator('//div[@data-testid="login-page-wrong-email-or-password-alert"]')
-        # Проверяем видимость элемента
-        expect(wrong_email_or_password_alert).to_be_visible()
-        # Проверяем текст
-        expect(wrong_email_or_password_alert).to_have_text("Wrong email or password")
+    dashboard_title = chromium_page.get_by_test_id('dashboard-toolbar-title-text')
+    expect(dashboard_title).to_be_visible()
